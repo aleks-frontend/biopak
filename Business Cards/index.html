@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html data-sign="OSZ">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/Museo/stylesheet.css);
+
+      :root {
+        --white: #ffffff;
+        --green: #004d1b;
+        --brown: #b18b67;
+        --light: 'Museo 300';
+        --normal: 'Museo 500';
+        --bold: 'Museo 700';
+      }
+
+      html {
+        font-family: "Circular";
+        font-size: 10pt;
+        color: #000;
+        word-break: break-word;
+        line-height: 1;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }      
+
+      /* Helper class for fixing Reposition tool bug */
+      .reposition-fix {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;        
+      }
+
+      .bleed .container:first-child {
+        background-color: var(--green)
+      }
+
+      .fit--front {
+        display: flex;
+        flex-direction: column;
+        background-image: url('https://files.outfit.io/media_library_items/94348/Background-Business-Card.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        color: var(--brown);
+        padding: 2.23rem 9.3rem 2rem 2.53rem;
+      } 
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .details__group {
+        line-height: 1em;
+        font-family: var(--normal);
+      }
+
+      .details__group--withTitles {
+        margin-top: 0.52rem;
+        margin-bottom: 0.76rem;
+        line-height: 0.6em;
+      }
+
+      .details__group .details__item {
+        font-size: 0.637rem;
+      }
+
+      .details__group--withTitles .details__item{
+        margin-bottom: 0.14em;
+        display: inline-block;
+      }
+
+      .details__group--address .details__item{
+        margin-bottom: 0.2rem;
+        line-height: 0.9em;
+      }
+
+      .details__group--withTitles label {
+        font-family: var(--bold);
+        display: inline-block;
+        font-size: 0.63rem;
+        width: 0.6rem;
+      }
+
+
+      .details__item--name {
+        font-family: var(--bold);
+        font-size: 1.069rem;
+      }
+
+      .details__item--title {
+        font-family: var(--normal);
+        font-size: 0.65rem;
+        margin-top: 0.1rem;
+      }
+
+      .website {
+        font-family: var(--bold);
+        font-size: 0.66rem;
+      }
+
+      .fit--back {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: url('https://files.outfit.io/media_library_items/94349/Background--Business-Card.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 2.05rem 3.4rem 1.45rem 8.5rem;
+      }
+
+      .body {
+        color: var(--green);
+        font-size: 0.7rem;
+        text-align: right;
+        margin-right: 0.1rem;
+      }
+
+      .heading {
+        font-family: var(--bold);
+        font-size: 0.84rem;
+        margin-left: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .subheading {
+        font-family: var(--normal);
+        font-size: 0.664rem;
+        margin-top: 0.74rem;
+        margin-left: 1.2rem;
+        line-height: 1.3;
+      }
+
+      .footer {
+        color: var(--white);
+        font-size: 0.5rem;
+        font-family: var(--normal)
+      }
+
+      .logo__container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-left: 1.28rem;
+        margin-bottom: 0.41rem;
+        margin-right: 0.1rem;
+      }
+
+      .logo--main {
+        background-image: url('{{{account.logos.reversed}}}');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        height: 2.5rem;
+        width: 5.4rem;
+        margin-right: 0.6rem;
+      }
+
+      .logo--supporter {
+        background-image: url('https://files.outfit.io/media_library_items/93616/B-corp%2520white.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+        height: 2.5rem;
+        width: 1.3rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .footer__bottom {
+        display: flex;
+        /*        align-items: flex-end;
+        justify-content: flex-end;*/
+        align-items: flex-end;
+        font-family: var(--normal);
+        font-size: 0.3rem;
+      }
+
+      .fsc {
+        display: flex;
+        align-items: flex-end;
+        text-align: center;
+        width: 3.4rem;
+        margin-right: -0.23rem;
+        margin-left: 0.32rem;
+      }
+      
+      .logoAndTextToggle--hide .fsc { display: none; }
+
+      .disclaimer {
+        text-align: right;
+        font-size: 0.283rem;
+        line-height: 1.4em;
+        /*        margin-bottom: 0.18rem;*/
+      }
+
+      .disclaimerToggle--hide .page .disclaimer { opacity: 0; }
+
+      .fsc__image {
+        width: 0.93rem;
+        margin-bottom: -0.12rem;
+      }
+
+      .url {
+        font-size: 0.13rem;
+        margin-left: 0.1rem;
+        display: inline-block;
+      }
+
+      .fsc__text {
+        width: 3.2rem;
+        line-height: 0.8;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .fsc span:first-child {
+        font-size: 0.265rem;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: -0.14rem;
+        margin-right: 0.1rem;
+      }
+
+      .fsc span:nth-child(3) {
+        font-size: 0.21rem;
+        line-height: 1;
+      }
+
+      .fsc span:nth-child(5) {
+        font-size: 0.26rem;
+        line-height: 1em;
+        display: block;
+        margin-top: 0.16rem;
+        margin-right: 0.05rem;
+      }
+
+      .is-firefox .fsc span:nth-child(5) {
+        font-size: 0.2rem;
+      }
+
+      .fsc__text {
+        width: 3.2rem;
+      }
+
+      .globalInputsMaster { display: none; }
+
+
+      .hide .disclaimer {
+        display: none;
+      }
+
+      @-moz-document url-prefix() {
+
+        .website {
+          margin-bottom: 0.1rem;
+        }
+        .details__item--title {
+          margin-top: 0rem;
+        }
+
+        .details__group--withTitles {
+          margin-bottom: 0.69rem;
+        }
+        .details__group--withTitles .details__item {
+          margin-bottom: 0.08em;
+        }
+        .details__group--address .details__item {
+          line-height: 0.93;
+        }
+        .subheading {
+          line-height: 1.2;
+        }
+        .logo--supporter {
+          width: 1.33rem;
+          margin-bottom: 0.4rem;
+        }
+        .disclaimer {
+          line-height: 1.4;
+        }
+        .fsc__image {
+          width: 1.3rem;
+        }
+        .fsc__text {
+          line-height: 0.7;
+        }
+
+        .fsc span:nth-child(3) {
+          line-height: 0.8;
+        }
+
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}
+                                         disclaimerToggle--{{BP_fsc_disclaimer-toggle--bc}}{{^BP_fsc_disclaimer-toggle--bc}}show{{/BP_fsc_disclaimer-toggle--bc}}
+                                         logoAndTextToggle--{{BP_fsc-logo-and-text-toggle--bc}}{{^BP_fsc-logo-and-text-toggle--bc}}show{{/BP_fsc-logo-and-text-toggle--bc}}
+                                         " data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-2 }}"></div>
+    </div><!-- end placeholderMaster -->
+    <div class="globalInputsMaster">
+      <div class="js-global-input-src" data-target-id="email-label" >{{{ BP_email-label--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="phone-number-label">{{{ BP_phone-number-label--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="mobile-number-label">{{{ BP_mobile-number-label--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="fax-number-label">{{{ BP_fax-number-label--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="website">{{{ BP_website--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="heading">{{{ BP_slogan--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="subheading">{{{ BP_mission-statement--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="disclaimer">{{{ BP_disclaimer--bc }}}</div>
+      <div class="js-global-input-src" data-target-id="fsc">{{{ BP_fsc--bc }}}</div>
+    </div><!-- end globalInputsMaster -->
+
+    {{ #spreadsheet.card-details }}
+    <div class="page">
+
+      <div class="bleed">
+        <div class=""></div> <!---->
+        <div class="container fit fit--front">
+
+          <div class="details">
+            <div class="details__group">
+              {{ #BP_full-name--bc }}
+              <div class="details__item--name" data-max-line="1">{{{ BP_full-name--bc }}}</div> <!--details__item--name-->
+              {{ /BP_full-name--bc }}
+
+              {{ #BP_title--bc }}
+              <div class="details__item--title" data-max-line="1">{{{ BP_title--bc }}}</div> <!--details__item--title-->
+              {{ /BP_title--bc }}
+            </div> <!--details__group-->
+
+            <div class="details__group details__group--withTitles">
+              <div class="details__titles"></div> <!---->
+              {{ #BP_email--bc }}
+              <label for="email" class="details__item—email" data-target-id="email-label" data-max-line="1">{{{ BP_email-label--bc }}}</label>              
+              <div class="details__item" id="email" data-max-line="1">{{{ BP_email--bc }}}</div> <!--details__item--><br>
+              {{ /BP_email--bc }}
+
+              {{ #BP_phone-number--bc }}
+              <label for="phone" class="details__item—phone" data-target-id="phone-number-label" data-max-line="1">{{{ BP_phone-number-label--bc }}}</label>
+              <div class="details__item" id="phone" data-max-line="1">{{{ BP_phone-number--bc }}}</div> <!--details__item--><br>
+              {{ /BP_phone-number--bc }}
+
+              {{ #BP_mobile-number--bc }}
+              <label for="mobile" class="details__item—mobile" data-target-id="mobile-number-label" data-max-line="1">{{{ BP_mobile-number-label--bc }}}</label>            
+              <div class="details__item" id="mobile" data-max-line="1">{{{ BP_mobile-number--bc }}}</div> <!--details__item--><br>
+              {{ /BP_mobile-number--bc }}
+
+              {{ #BP_fax-number--bc }}
+              <label for="fax" class="details__item—fax" data-target-id="fax-number-label" data-max-line="1">{{{ BP_fax-number-label--bc }}}</label>
+
+              <div class="details__item" id="fax" data-max-line="1">{{{ BP_fax-number--bc }}}</div> <!--details__item-->
+              {{ /BP_fax-number--bc }}
+            </div> <!--details__group--withTitles-->
+
+            <div class="details__group details__group--address">
+              {{ #BP_address-line-1--bc }}
+              <div class="details__item" data-max-line="1">{{{ BP_address-line-1--bc }}}</div> <!--details__item-->
+              {{ /BP_address-line-1--bc }}
+
+              {{ #BP_address-line-2--bc }}
+              <div class="details__item" data-max-line="1">{{{ BP_address-line-2--bc }}}</div> <!--details__item-->
+              {{ /BP_address-line-2--bc }}
+
+              {{ #BP_address-line-3--bc }}
+              <div class="details__item" data-max-line="1">{{{ BP_address-line-3--bc }}}</div> <!--details__item-->
+              {{ /BP_address-line-3--bc }}
+            </div>  <!--details__group--withTitles--> 
+
+          </div> <!--details-->
+          {{{ BP_-bc }}}
+          <div class="website" data-target-id="website" data-max-line="1">{{{ BP_website--bc }}}</div>
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+    <div class="page">
+
+      <div class="bleed">
+        <div class="container fit fit--back">
+
+          <div class="body">
+            <div class="heading" data-target-id="heading" data-max-line="2">{{{ BP_slogan--bc }}}</div> <!--heading-->
+            <div class="subheading" data-target-id="subheading" data-max-line="4">{{{ BP_mission-statement--bc }}}</div> <!--subheading-->
+          </div> <!--body-->
+
+          <div class="footer">
+
+            <div class="logo__container">
+              <div class="logo logo--main"></div> <!--logo--main-->
+              <div class="log logo--supporter"></div> <!---->
+            </div> <!--logo__container-->
+
+            <div class="footer__bottom">
+              <div class="disclaimer" data-target-id="disclaimer" data-max-line="2">{{{ BP_disclaimer--bc }}}</div> <!--disclaimer-->
+              <div class="fsc">
+                <div>
+                  <img class="fsc__image" src="https://files.outfit.io/media_library_items/93620/FSC%2520logo.svg"> <!--fsc__image-->
+                  <span class="url">www.fsc.org</span>
+                </div>
+                <div class="fsc__text">
+                  <span>Recycled</span>
+                  <br>
+                  <span>Paper made from <br>
+                    recycled material</span>
+                  <br>
+                  <span class="fsc__disclaimer"data-target-id="fsc" data-max-line="1">{{{ BP_fsc--bc }}}</span>
+                </div> <!--fsc__text-->
+              </div> <!--fsc-->
+            </div> <!--footer__bottom-->
+
+          </div> <!--footer-->
+
+        </div><!--container fit--back-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+    {{ /spreadsheet.card-details }}
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Temporary solution before we set up the new Mutation Observer on Monday
+      setInterval(() => {
+        //        injectGlobals();
+      }, 1000);
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      function detectSystem() {
+        const isMac = window.navigator.appVersion.includes('Mac');
+        if ( isMac ) document.body.classList.add('is-mac');
+      }
+
+      // Helper function for injecting the global inputs inside the spreadsheets
+      function injectGlobals() {
+        const sources = document.querySelectorAll('.js-global-input-src');
+        sources.forEach(source => {
+          const targetId = source.dataset.targetId;
+          const targets = document.querySelectorAll(`[data-id=${targetId}]`);
+          targets.forEach(target => target.innerText = source.innerText );
+        });
+      }
+
+      //      injectGlobals();
+      detectSystem();
+
+    </script>
+
+
+  </body>
+</html>
