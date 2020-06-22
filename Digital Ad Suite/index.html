@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html data-sign="OSL">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/Museo/stylesheet.css); 
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/BioPakNew/stylesheet.css); 
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/BioPak%20Bold%20New/stylesheet.css);
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/Helvetica%20Neue%20Condensed%20LT/stylesheet.css); 
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/Helvetica%20Neue%20LT/stylesheet.css); 
+      @import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/Museo%20Slab%201000/stylesheet.css');
+
+
+      :root {
+        --primary: {{{account.colors.primary}}};
+        --green: {{{account.colors.green}}};
+        --bright-green: {{{account.colors.bright-green}}};
+        --brown: {{{account.colors.brown}}};
+        --orange: {{{account.colors.orange}}};
+        --buff: {{{account.colors.buff}}};
+        --white: #fff;
+        --yellow: {{{account.colors.yellow}}};
+        --grey: {{{account.colors.grey}}};
+        --black: {{{account.colors.black}}};
+
+        --biopak-new: 'BioPak Bold New';
+        --museo: 'Museo 900';
+        --museo-slab: 'Museo Slab 1000';
+        --montserrat: 'Montserrat';
+      }
+
+      /*
+      .white-colour { --dynamic-colour: var(--white); }
+      .green-colour {  --dynamic-colour : var(--bioPak-green); }
+      .green { --dynamic-color: var(--bioPak-green); }
+      .dark-green { --dynamic-color: var(--bioPak-dark-green); }
+      .brown { --dynamic-color: var(--bioPak-brown); }
+      .grey { --dynamic-color: var(--bioPak-grey); }
+      .orange { --dynamic-color: var(--bioPak-orange); }
+      .buff { --dynamic-color: var(--bioPak-buff); }
+      .white { --dynamic-color: var(--white); }
+      */
+
+      html {
+        font-family: 'Museo 500';
+        font-size: 11pt;
+        color: var(--black);
+        word-break: break-all;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }
+
+      .foregroundImage {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+      }
+
+      .tinymce_style--dark {
+        color: var(--primary);
+      }
+
+      .tinymce_style--light {
+        color: var(--green);
+      }
+
+      /* GRID */
+
+      .grid {
+        position: relative;
+        display: grid;       
+        height: 100%;
+        padding: 3mm;
+      }
+
+      .instagram .grid {
+        grid-template-columns: 225px 182px 1fr 1fr 182px 225px;
+        grid-template-rows: auto 1fr auto 162px;
+      }
+
+      .linkedin .grid {
+        grid-template-columns: auto 1fr 40%;
+        grid-template-rows: auto 1fr 130px;
+        padding: calc(5pt + 3mm);
+      }
+
+      .mrec .grid {
+        grid-template-columns: 40% 1fr 1fr 40%;
+        grid-template-rows: auto 1fr auto 50px;
+      }
+
+      .skyscraper .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 25% 1fr auto auto auto;
+      }  
+
+      .wide-skyscraper .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 25% 1fr auto auto auto;
+      }
+
+      .pinterest .grid {
+        grid-template-columns: 10% 20% 1fr 1fr 20% 10%;
+        grid-template-rows: 38% 1fr auto 13%;
+      }
+
+      .facebook .grid {
+        grid-template-columns: auto 1fr 39%;
+        grid-template-rows: auto 1fr 20%;
+      }
+
+      .twitter .grid {
+        grid-template-columns: 30% 1fr 50%;
+        grid-template-rows: auto 1fr 20%;
+      }
+
+      .twitter.has-cta .grid {
+        grid-template-columns: auto 1fr 38%;
+      }
+
+      .google .grid {
+        grid-template-columns: 20pt 10% 10% 1fr 1fr 10% 10% 20pt;
+        grid-template-rows: auto 1fr 13% 20pt;
+      }
+
+      .square .grid {
+        grid-template-columns: 5% 1fr 1fr auto 5%;
+        grid-template-rows: auto 1fr auto 18%;
+      }
+
+      .banner .grid,
+      .leaderboard .grid {
+        grid-template-columns: 34% 1fr 17% auto;
+        grid-template-rows: 50% 50%;
+      }      
+
+      /* END GRID */
+
+      .grid__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+        padding: 10px;
+      }
+
+      /* HEADING__CONTAINER */
+
+      .heading__container {    
+        font-family: 'BioPak New';
+        font-size: 13pt;
+        padding: 20pt;
+        letter-spacing: -0.03em;
+        color: var(--dynamic-colour);
+        flex-direction: column;
+      }  
+
+      .instagram  .heading__container {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        padding: 63pt 30pt 0;
+      }
+
+      .linkedin .heading__container {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        padding: 20pt;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .mrec .heading__container {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        padding: 22px 10px 0;
+      }
+
+      .skyscraper .heading__container,
+      .wide-skyscraper .heading__container {      
+        grid-column: 1 / 1;
+        grid-row: 1 / 2;
+        padding: 7pt;
+      }
+
+      .wide-skyscraper .heading__container {
+        padding: 15pt 10pt 7pt;
+        justify-content: flex-start !important;
+      }
+
+      .pinterest .heading__container {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        padding: 20pt 45pt 80pt;
+      }
+
+      .facebook .heading__container {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        padding: 30pt 30pt 20pt;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .twitter .heading__container {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20pt;
+      }
+
+      .google .heading__container {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+      }
+
+      .square .heading__container {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        padding: 20px 10px 0;
+      }
+
+      .banner .heading__container,
+      .leaderboard .heading__container {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        padding: 0 0 0 8px;
+        justify-content: flex-start;
+      }
+
+      .banner .heading__container {
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .leaderboard .heading__container {
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 25px;
+      }
+
+      /* END HEADING__CONTAINER */
+
+
+      /* HEADING MAX-HEIGHT */  
+
+      .instagram .heading__maxHeight {
+        max-height: 620px;
+      }
+
+      .linkedin .heading__maxHeight {
+        max-height: 460px;
+      }
+
+      .mrec .heading__maxHeight {
+        max-height: 130px;
+      }
+
+      .skyscraper .heading__maxHeight {
+        max-height: 240px;
+      }
+
+      .wide-skyscraper .heading__maxHeight {
+        max-height: 285px;
+      }
+
+      .pinterest .heading__maxHeight {
+        max-height: 450px;
+      }
+
+      .facebook .heading__maxHeight {
+        max-height: 420px;
+      }
+
+      .twitter .heading__maxHeight {
+        max-height: 345px;
+      }
+
+      .google .heading__maxHeight {
+        max-height: 315px;
+      }
+
+      .square .heading__maxHeight {
+        max-height: 183px;
+      }
+
+      .banner .heading__maxHeight {
+        max-height: 45px;
+      }
+
+      .leaderboard .heading__maxHeight {
+        max-height: 65px;
+      }
+
+      /*HEADING*/
+
+      .heading {
+        font-size: 2.561rem;
+        line-height: 0.25rem;
+        /*word-break: break-all;*/
+        margin-bottom: 0.25rem;
+      }
+
+      .linkedin .heading {
+        font-size: 53pt;
+      }     
+
+      .mrec .heading {
+        font-size: 2.2rem;    
+      }
+
+      .skyscraper .heading {
+        font-size: 1.561rem;
+        word-break: break-all;    
+      }
+
+      .wide-skyscraper .heading {
+        font-size: 1.561rem;
+        word-break: break-all;   
+      }
+
+      .pinterest .heading {
+        font-size: 1.361rem;    
+      }        
+
+      .facebook .heading {
+        font-size: 73pt;   
+      }     
+
+      .twitter .heading {
+        font-size: 50pt;      
+      }
+
+      .google .heading {
+      }
+
+      .square .heading {
+      }
+
+      .banner .heading {
+        font-size: 1.061rem;        
+      }
+
+      .leaderboard .heading {
+        font-size: 1.161rem;        
+      }  
+
+      .heading__inner {
+
+      }
+
+      .heading__inner .biopak-new {
+        font-family: var(--biopak-new);
+      }
+
+      .heading__inner .museo {
+        font-family: var(--museo);
+      }
+
+      .heading__inner .museo-slab {
+        font-family: var(--museo-slab);
+      }
+
+      .heading__inner .montserrat {
+        font-family: var(--montserrat);
+      }
+
+      /* END HEADING */
+
+
+      /* HEADING H1 H2 */
+
+      /*
+      .heading h1 {
+      font-size: 1em;
+      line-height: 0.8em;
+      }
+
+      .heading h2 {
+      font-size: 0.7em;
+      line-height: 0.8em;
+      }
+      */
+
+      /* END HEADING H1 H2 */
+
+
+      /* IMAGE CONTAINER */
+
+      .image__container {
+        grid-column: 2 / 6;
+        grid-row: 2 / 3;
+      }
+
+      .instagram .image__container {
+        grid-column: 2 / 6;
+        grid-row: 2 / 3;
+      }
+
+      .linkedin .image__container {
+        grid-column: 3 / -1;
+        grid-row: 1 / -1;
+      }
+
+      .mrec .image__container {
+        grid-column: 1 / -1;
+      }
+
+      .skyscraper .image__container {
+        grid-column: 1 / 1;
+        grid-row: 2 / 3;
+      }
+
+      .wide-skyscraper .image__container {
+        grid-column: 1 / 1;
+        grid-row: 2 / 3;
+      }
+
+      .pinterest .image__container {
+        grid-column: 2 / -2;
+        grid-row: 2 / 3;
+      }
+
+      .facebook .image__container {
+        grid-column: 2 / 4;
+        grid-row: 1 / 3;
+      }
+
+      .twitter .image__container {
+        grid-column: 3 / 4;
+        grid-row: 1 / 4;
+      }
+
+      .google .image__container {
+        grid-column: 2 / -2;
+        grid-row: 2 / 3;
+      }
+
+      .square .image__container {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+      }
+
+      .banner .image__container,
+      .leaderboard .image__container {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+      }
+
+      /* END IMAGE CONTAINER */
+
+
+      /* SUBHEADING CONTAINER */
+
+      .subheading__container {     
+        font-family: 'Museo 500';
+        padding: 0 1.910rem;
+        font-size: 0.651rem;
+        color: var(--dynamic-colour);
+      }
+
+      .subheading__container--leaderboard, 
+      .subheading__container--skyscraper,
+      .subheading__container--wide-skyscraper {
+        display: none !important;
+      }            
+
+      .instagram .subheading__container {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        padding: 0 88pt;
+        font-size: 30pt;
+      }
+
+      .linkedin .subheading__container {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+        padding: 20pt;
+        align-items: flex-start;
+        justify-content: flex-start;        
+      }
+
+      .mrec .subheading__container {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px 0;  
+        font-size: 18px;      
+        width: 100%;
+      }
+
+      .mrec .subheading__containder .subheading {
+        width: inherit;
+      }
+
+      .skyscraper .subheading__container {
+        grid-column: 1 / 1;
+        grid-row: 3 / 5;
+        padding: 5pt 7pt;
+        max-width: 120px;
+      }
+
+      .skyscraper.has-cta .subheading__container {
+        grid-row: 3 / 4;
+        padding: 0 10px 15px;
+      }      
+
+      .wide-skyscraper .subheading__container {
+        grid-column: 1 / 1;
+        grid-row: 3 / 4;
+        padding: 0 15px 15px;
+        max-width: 160px;
+      }
+
+      .pinterest .subheading__container {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        font-size: 0.551rem;
+      }  
+
+      .facebook .subheading__container {
+        grid-column: 1 / 3;
+        grid-row: 2 / 4;
+        padding: 0 30pt;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .facebook.has-cta .subheading__container {
+        grid-row: 2 / 3;
+      }
+
+      .twitter .subheading__container {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+        padding: 0 20pt;
+        justify-content: flex-start;
+        align-items: flex-start;        
+      }
+
+      .google .subheading__container {
+        display: none;
+      }
+
+      .square .subheading__container {
+        grid-row: 3 / 4;
+        grid-column: 2 / 4;
+        align-items: flex-start;
+        padding: 0;
+      }
+
+      .square .subheading__container .subheading {
+        width: 100%;
+      }
+
+      .square.has-cta .subheading__container {
+        grid-row: 3 / 4;
+        align-items: flex-start;
+      }
+
+      .banner .subheading__container,
+      .leaderboard .subheading__container {
+        justify-content: flex-end;
+        grid-column: 4 / -1;
+        grid-row: 1 / 2;
+        font-size: 1.151rem;
+      }
+
+      .leaderboard .subheading__container {
+        display: none;
+        padding-top: 15px;
+        padding-bottom: 3px;
+        padding-right: 0px;
+        font-size: 30px;
+      }
+
+      .skyscraper .subheading__container, 
+      .wide-skyscraper .subheading__container {
+        display: none;
+      }
+
+      .skyscraper .subheading__container--skyscraper, 
+      .wide-skyscraper .subheading__container--wide-skyscraper {
+        display: flex !important;
+        justify-content: center;
+      }
+
+      .banner .subheading__container {
+        padding-right: 10px;
+      }
+
+      .leaderboard .subheading__container--leaderboard {
+        display: flex !important;
+        justify-content: flex-end;
+        padding: 0 25px;
+        margin-top: 5px;
+      }
+
+      /* END SUBHEADING CONTAINER */    
+
+      /* CTA__CONTAINER */     
+
+      .cta__container {
+        grid-column: 3 / 5;
+        grid-row: 3 / 5;
+      }   
+
+      .cta {
+        padding: 0.5em 1.5em;
+        text-decoration: none;
+        color: #fff;
+        background: var(--orange);
+        border-radius: 0.3em;
+        text-align: left;
+        max-width: 5.5rem;
+        display: flex;
+        min-height: 1.5rem;
+      }
+
+      .cta--leaderboard-banner { display: none; }
+
+      .leaderboard .cta,
+      .banner .cta { 
+        display: none; 
+      }      
+
+      .leaderboard .cta--leaderboard-banner,
+      .banner .cta--leaderboard-banner { 
+        display: flex; 
+        margin-right: 25px;
+      }
+
+      .banner .cta--leaderboard-banner {
+        margin-right: 10px;
+      }       
+
+      .u-bioPakLogo-hide.u-supportLogo-hide .leaderboard .cta--leaderboard-banner,
+      .u-bioPakLogo-hide.u-supportLogo-hide .banner .cta--leaderboard-banner { 
+        margin-right: 0;
+      }      
+
+      .textFit-horizontal {
+        margin: auto;
+      }
+
+      .wide-skyscraper .cta {
+        min-height: 1rem;
+      }
+
+      .skyscraper .cta {
+        padding: 0.5em 1em;
+        min-height: 1rem;
+      }
+
+      .facebook .cta {
+        font-size: 0.6rem;
+      }      
+
+      .linkedin .cta {
+        font-size: 35px;
+      }            
+
+      .instagram. .cta__container .cta a {
+        margin-bottom: 7%;
+      }
+
+      .instagram .cta__container {
+        grid-column: 1 / 4;
+        grid-row: 4 / 5;
+        font-size: 30pt;
+        padding: 30pt;
+        justify-content: flex-start;
+      }
+
+      .displayFooterLogos--hide.instagram .cta__container  {
+        justify-content: center;
+        grid-column: 1 / -1;
+      }
+
+      .u-bioPakLogo-hide.u-supportLogo-hide .instagram.has-cta .cta__container {
+        grid-column: 2 / 6;
+        grid-row: 4 / 5;
+        justify-content: center;
+      }
+
+      .mrec .cta__container {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+        justify-content: flex-start;
+        padding: 10px 10px;
+        font-size: 12px;
+      }
+
+      .u-bioPakLogo-hide.u-supportLogo .mrec .cta__container,
+      .displayFooterLogos--hide.mrec .cta__container {
+        justify-content: center;
+        grid-column: 1 / -1;
+      }
+
+      .skyscraper .cta__container {
+        grid-column: 1 / 1;
+        grid-row: 4 / 5;
+        padding: 0px 10px 15px;
+      }
+
+      .wide-skyscraper .cta__container {
+        grid-column: 1 / 1;
+        grid-row: 4 / 5;
+        padding: 0 15px 15px;
+      }
+
+      .pinterest .cta__container {
+        display: none;
+        grid-column: 1 / 4;
+        grid-row: 4 / 5;
+        justify-content: flex-start;
+        font-size: 30pt;
+        padding: 45pt;
+      }
+
+      .pinterest .cta {
+        min-height: 1.2rem;
+      }
+
+      .displayFooterLogos--hide.pinterest .cta__container  {
+        justify-content: center;
+        grid-column: 1 / -1;
+      }
+
+      .pinterest.has-cta .cta__container {
+        display: flex;
+      }
+
+      .u-bioPakLogo-hide.u-supportLogo-hide .pinterest.has-cta .cta__container {
+        justify-content: center;
+        grid-column: 2 / 6;
+      }
+
+      .facebook .cta__container {
+        display: none;
+        grid-column: 1 / 2;
+        grid-row: 3 / -1;
+        padding: 30pt;
+        justify-content: flex-start;
+      }
+
+      .facebook.has-cta .cta__container {
+        display: flex;
+      }
+
+      .linkedin .cta__container {
+        grid-column: 1 / 2;
+        grid-row: 3 / -1;
+        padding: 20pt 0 20pt 20pt;
+        justify-content: flex-start;
+      }
+
+      .linkedin.has-cta .cta__container {
+        display: flex;
+      }      
+
+      .twitter .cta__container {
+        display: none;
+        grid-column: 1 / 2;
+        grid-row: 3 / -1;
+        padding: 15pt 0pt 15pt 20pt;
+        font-size: 0.6rem;
+      }
+
+      .twitter.has-cta .cta__container {      
+        display: flex;
+      }
+
+      .google .cta__container {
+        display: none;
+        grid-column: 4 / -1;
+        font-size: 0.7rem;        
+      }
+
+      .google.has-cta .cta__container {
+        display: flex;
+        padding: 0;
+        grid-row: 3 / 4; 
+        grid-column: 2 / 5;
+        justify-content: flex-start;
+      }      
+
+      .u-bioPakLogo-hide.u-supportLogo-hide .google.has-cta .cta__container,
+      .displayFooterLogos--hide.google .cta__container  {
+        grid-column: 1 / -1;
+        justify-content: center;
+      }
+
+      .square .cta__container {
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+        font-size: 12px;
+        justify-content: flex-start;
+        padding-top: 10px;
+      }
+
+      .u-bioPakLogo-hide.u-supportLogo-hide .square.has-cta .cta__container,
+      .displayFooterLogos--hide.square .cta__container {
+        grid-column: 1 / -1;
+        justify-content: center;
+      }
+
+      .banner .cta__container,
+      .leaderboard .cta__container {
+        display: none;
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+        font-size: 8px;
+        padding: 0;
+      }
+
+      .leaderboard .cta__container {
+        font-size: 11px;
+      }
+
+      .banner.has-cta .cta__container,
+      .leaderboard.has-cta .cta__container {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 25px;
+      }
+
+      .skyscraper .cta__container {
+        font-size: 12px;
+      }
+
+      .wide-skyscraper .cta__container {
+        font-size: 12px;
+      }
+
+      .displayFooterLogos--hide.banner .cta,
+      .displayFooterLogos--hide.leaderboard .cta {
+        margin-right: 0;
+      }
+
+      /* END CTA__CONTAINER */     
+
+
+      /* LOGO CONTAINER */
+
+      .instagram .logo__container {
+        grid-column: 3 / 5;
+        grid-row: 4 / 5;
+        padding: 30pt;
+      }   
+
+      .instagram.has-cta .logo__container {
+        grid-column: 4 / -1;
+        grid-row: 4 / 5;
+        justify-content: flex-end;
+      }          
+
+      .instagram.no-cta .logo__container {
+        grid-column: 2 / 6;        
+      }
+
+      .instagram.no-cta .logo__container.logo__container--noSupport,
+      .u-bioPakLogo-hide .instagram.no-cta .logo__container {
+        grid-column: 2 / -2;
+      }      
+
+      .instagram.has-cta .logo__container.logo__container--noSupport .logo,
+      .instagram .logo__container.logo__container--noSupport .logo,
+      .u-bioPakLogo-hide .instagram.has-cta .logo__container .logo--supporter .logo--supporter-reversed,
+      .u-bioPakLogo-hide .instagram.no-cta .logo__container .logo--supporter .logo--supporter-reversed {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .linkedin.has-cta .logo__container {
+        grid-column: 2 / 3;
+        grid-row: 3 / -1;
+        padding: 25pt 0 25pt 20pt;
+        justify-content: flex-start;
+      }
+
+      .linkedin.no-cta .logo__container {
+        grid-column: 1 / 3;
+        justify-content: flex-start;
+        padding-left: 20pt;
+      }
+
+      .linkedin.no-cta .logo__container > .logo {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 70%;
+      }    
+
+      .mrec .logo__container {
+        grid-column: 4 / 5;
+        grid-row: 4 / 5;
+        display: flex;
+        align-items: center;
+      }
+
+      .mrec.has-cta .logo__container {
+        grid-column: 3 / 5;
+        grid-row: 4 / 5;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-left: 0;
+      }
+
+      .mrec.no-cta .logo__container {
+        grid-column: 1 / -1;
+        padding: 10px 75px;
+      }
+
+      .wide-skyscraper .logo__container,
+      .skyscraper .logo__container {
+        grid-column: 1 / 1;
+        grid-row: 5 / 6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 15px 15px;   
+      }
+
+      .u-supportLogo-hide .skyscraper .logo__container,
+      .u-bioPakLogo-hide .skyscraper .logo__container,
+      .u-supportLogo-hide .wide-skyscraper .logo__container,
+      .u-bioPakLogo-hide .wide-skyscraper .logo__container {
+        justify-content: center;
+      }
+
+      .u-supportLogo-hide.u-bioPakLogo-hide .skyscraper .logo__container,
+      .u-supportLogo-hide.u-bioPakLogo-hide .wide-skyscraper .logo__container {
+        display: none;
+      }
+
+      .skyscraper .logo {
+        max-height: 30pt;
+        max-width: 50%;
+      }
+
+      .skyscraper .logo--supporter-reversed,
+      .skyscraper .logo--supporter{
+        margin-right: 0.4rem;
+        max-height: 15pt;
+      }
+
+      .wide-skyscraper .logo {
+        max-height: 18pt;
+      }
+
+      .pinterest .logo__container {
+        grid-column: 3 / 5;
+        grid-row: 4 / 5;
+        justify-content: flex-end;
+        padding: 45pt 45pt 45pt 0;
+      }
+
+      .pinterest.has-cta .logo__container {
+        grid-column: 4 / -1;
+      }
+
+      .pinterest.no-cta .logo__container {
+        grid-column: 2 / 6;
+        justify-content: center;
+        padding: 45pt 0;
+      }
+
+      .facebook .logo__container {
+        grid-column: 2 / 4;
+        grid-row: 3 / 4;
+        justify-content: flex-start;
+        padding: 30pt 30pt 30pt 30pt;    
+      }  
+
+      .facebook.has-cta .logo__container {
+        padding: 30pt 30pt 30pt 0pt;            
+      }
+
+
+
+
+      .facebook .logo--supporter-reversed,
+      .facebook .logo--supporter {
+        margin-right: 0.5rem;   
+      }
+
+
+
+      .twitter .logo__container {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        padding: 20pt 0pt 20pt 20pt;
+      }
+
+      .twitter.has-cta .logo__container {
+        grid-column: 2 / 3;
+        justify-content: flex-start;
+      }
+
+      .leaderboard .logo__container,
+      .banner .logo__container {
+        font-size: 11px;
+      }      
+
+      .leaderboard .logo {
+        max-width: 50pt;
+      }
+
+      .banner .logo {
+        max-width: 40pt;
+      }      
+
+      .u-supportLogo-hide.u-bioPakLogo-show .twitter.has-cta .logo__container,
+      .u-supportLogo-hide.u-bioPakLogo-hide .twitter.has-cta .logo__container,
+      .u-supportLogo-show.u-bioPakLogo-hide .twitter.has-cta .logo__container {
+        justify-content: flex-start;
+        padding-left: 0;
+      }
+
+      .twitter.no-cta .logo__container {		
+        justify-content: flex-start;
+        grid-column: 1 / -1;
+      }
+
+      .google .logo__container {
+        grid-column: 4 / 6;
+        grid-row: 3 / 4;
+        padding: 0;
+      }  
+
+      .google.no-cta .logo__container {
+        grid-column: 4 / 6;
+      }
+
+      .google.has-cta .logo__container {
+        grid-column: 5 /span 3;
+        justify-content: flex-end;      
+      }
+
+      .google.has-cta .logo__container.logo__container--noSupport,
+      .u-bioPakLogo-hide .google.has-cta .logo__container {
+        grid-column: span 3 / -2;
+        justify-content: flex-end;
+      }
+
+
+      .google.no-cta .logo__container.logo__container--noSupport,
+      .u-bioPakLogo-hide .google.no-cta .logo__container {
+        grid-column: 2 / -2;
+      }      
+
+      .google.has-cta .logo__container.logo__container--noSupport .logo,
+      .google .logo__container.logo__container--noSupport .logo,
+      .u-bioPakLogo-hide .google.has-cta .logo__container .logo--supporter .logo--supporter-reversed,
+      .u-bioPakLogo-hide .google.no-cta .logo__container .logo--supporter .logo--supporter-reversed{
+        margin-left: 0;
+        width: 100%;
+        object-fit: contain;
+      }
+
+      .square .logo__container {
+        grid-column: 2 / 5;
+      }     
+
+      .square.no-cta .logo__container {
+        grid-column: 1 / 6;
+        padding: 10px 65px;
+      }
+
+      .square.has-cta .logo__container {
+        grid-row: 4 / 5;
+        grid-column: 3 / -1;
+        justify-content: flex-end;
+        padding-left: 0;
+      }      
+
+      .banner .logo__container,
+      .leaderboard .logo__container {
+        justify-content: flex-end;
+        grid-column: 3 / 5;
+        grid-row: 2 / 3;
+        padding: 10px 25px 10px 0;
+      }
+
+      .banner .logo__container {
+        padding: 5px 10px 10px 10px;
+      }      
+
+      .leaderboard.no-cta .logo__container.logo__container--noSupport {
+        grid-column: 4 / 5;
+        grid-row: 2 / 3;
+        padding: 0 30px 0px 0px;
+      } 
+
+      .banner.has-cta .logo__container,
+      .leaderboard.has-cta .logo__container{
+        grid-column: 4 / 5;
+      }
+
+      .displayFooterLogos--hide .logo__container { display: none !important; }
+
+      .displayFooterLogos--hide.banner .logo__container,
+      .displayFooterLogos--hide.leaderboard .logo__container { 
+        display: flex !important; 
+      }
+
+      .displayFooterLogos--hide.banner .logo,
+      .displayFooterLogos--hide.leaderboard .logo { 
+        display: none !important;
+      }
+      /* END LOGO CONTAINER */
+
+      .logo {
+        width: auto;
+        max-width: 40%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .u-bioPakLogo-hide .logo--main {
+        display: none;
+      }
+
+      /*.primary-logo {
+      content: url({{{account.logos.primary}}});
+      }
+
+      .black-logo {
+      content: url({{{account.logos.secondary-reversed}}});
+      }
+
+      .white-logo {
+      content: url({{{account.logos.reversed}}});
+      }*/
+
+      .twitter.no-cta .logo__container > .logo {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;     
+      }
+
+      .logo--supporter-reversed,
+      .logo--supporter{
+        width: auto;
+        max-width: 40%;
+        height: auto;
+        max-height: 80%;
+      }
+
+      .logo--supporter-reversed, .logo--supporter { margin-right: 0.5rem; }
+
+      .u-bioPakLogo-hide .logo,
+      .u-supportLogo-hide .logo { 
+        margin-left: 0.5rem;    
+      }
+
+      .facebook .logo__container .u-supportLogo-hide .logo {
+        margin-left: 0;
+      }
+
+      /* Colour conversion */
+
+      .heading--1 p,
+      .heading--2 p,
+      .subheading p {
+        color: var(--bioPak-grey);
+      }
+
+      .heading--1 h1,
+      .heading--2 h1,
+      .subheading h1 {
+        color: var(--bioPak-green);
+      }
+
+      .heading--1 h2,
+      .heading--2 h2,
+      .subheading h2 {
+        color: var(--bioPak-dark-green);
+      }
+
+      .heading--1 h3,
+      .heading--2 h3,
+      .subheading h3 {
+        color: var(--bioPak-brown);
+      }
+
+      .heading--1 h4,
+      .heading--2 h4,
+      .subheading h4 {
+        color: var(--bioPak-orange);
+      }
+
+      .heading--1 h5,
+      .heading--2 h5,
+      .subheading h5 {
+        color: var(--bioPak-buff);
+      }
+
+      .heading--1 h6,
+      .heading--2 h6,
+      .subheading h6 {
+        color: var(--white);
+      }
+
+      .page.skyscraper .logo{
+        margin: 0 auto;
+      }
+      .page.wide-skyscraper .logo{
+        margin: 0 auto;
+      }
+      .logo.no-team-logo{
+        max-width: 50%;
+      }
+      .logo--supporter.logo--supporter-toggle-{
+        display:block;
+      }
+      .logo--supporter-reversed.logo--supporter-toggle-{
+        display:none;
+      }
+
+      .logo--supporter.logo--supporter-toggle-reversed{
+        display:none;
+      }
+      .logo--supporter.logo--supporter-reversed.logo--supporter-toggle-reversed{
+        display:block;
+      }
+      .logo--supporter.logo--supporter-toggle-primary{
+        display:block;
+      }
+      .logo--supporter-reversed.logo--supporter-toggle-primary{
+        display:none !important;
+      }
+
+      .skyscraper .logo.no-team-logo,
+      .wide-skyscraper .logo.no-team-logo {
+        max-width: 100%;
+      }
+      
+     sup {
+          vertical-align: baseline;
+          position: relative;
+          top: -0.51em;
+          line-height: 0.03em;
+          font-size: 0.6em;
+      }
+      
+      sub {
+          vertical-align: baseline;
+          position: relative;
+          top: 0.01em;
+          line-height: 0.03em;
+          font-size: 0.6em;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}} 
+
+
+                                         " data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+
+    <!--{{{BP_primary-logo--fp-page-one}}}-->
+    <!---{{{BP_format--das}}}-->
+    <!---{{{BP_background-image--das}}}-->
+    <!---{{{BP_foreground-image--das}}}-->
+    <!---{{BP_product-hero-image-scale--fp}}-->
+    <!---{{ BP_product-hero-image-rotate--fp }}-->
+    <!---{{BP_product-hero-image-pos-x--fp}}-->
+    <!---{{BP_product-hero-image-pos-y--fp}}-->
+    <!---{{{BP_heading-1--das}}}-->
+    <!---{{BP_heading-1-size--das}}-->
+    <!---{{BP_heading_font_das}}-->
+    <!---{{BP_front-heading1-colour--fp}}-->
+    <!---{{{BP_heading-2--das}}}-->
+    <!---{{BP_heading-2-size--das}}-->
+    <!---{{BP_subheading_font_das}}--->
+    <!---{{BP_front-heading2-colour--fp}}-->
+    <!---{{{BP_subheading--das}}}-->
+    <!---{{BP_heading-3-size-das}}-->
+    <!---{{BP_front-heading3-colour--fp}}-->
+    <!--{{#collection.BP_call-to-action-button--das}}-->
+    <!--{{{BP_call-to-action-url--das}}}-->
+    <!--{{{BP_call-to-action-text--das}}}-->
+    <!--{{/collection.BP_call-to-action-button--das}}-->
+
+    <div class="page {{{BP_format--das}}}{{^BP_format--das}}instagram{{/BP_format--das}} {{{BP_brand-text-colour--das}}}{{^BP_brand-text-colour--das}}white-colour{{/BP_brand-text-colour--das}} 
+                {{#collection.BP_call-to-action-button--das.length}}has-cta{{/collection.BP_call-to-action-button--das.length}}{{^collection.BP_call-to-action-button--das.length}}no-cta{{/collection.BP_call-to-action-button--das.length}} displayFooterLogos--{{{ BP_showhidelogos--fp }}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="backgroundImage">{{{BP_background-image--das}}}</div><!--backgroundImage-->
+
+          {{#BP_foreground-image--das}}
+          <img src="{{BP_foreground-image--das}}" class="foregroundImage" style="transform: scale({{BP_product-hero-image-scale--fp}}{{^BP_product-hero-image-scale--fp}}1{{/BP_product-hero-image-scale--fp}}) rotate({{ BP_product-hero-image-rotate--fp }}{{^BP_product-hero-image-rotate--fp}}0{{/BP_product-hero-image-rotate--fp}}deg) translate({{BP_product-hero-image-pos-x--fp}}{{^BP_product-hero-image-pos-x--fp}}50{{/BP_product-hero-image-pos-x--fp}}%, {{BP_product-hero-image-pos-y--fp}}{{^BP_product-hero-image-pos-y--fp}}50{{/BP_product-hero-image-pos-y--fp}}%);"/>
+          {{/BP_foreground-image--das}}          
+
+          <div class="grid">
+            <div class="grid__item heading__container">
+              <div class="heading__maxHeight" data-max-height="css">
+                <div class="heading heading--1" >
+                  <div class="heading__inner" style="font-size: {{BP_heading-1-size--das}}%; line-height: 1em; color: var(--{{BP_front-heading1-colour--fp}}{{^BP_front-heading1-colour--fp}}primary{{/BP_front-heading1-colour--fp}});
+                                                     font-family: var(--{{BP_heading_font_das}}{{^BP_heading_font_das}}biopak-new{{/BP_heading_font_das}})">
+                    {{{BP_heading-1--das}}}
+                  </div><!--heading__inner-->
+                </div><!--heading-->
+                <div class="heading heading--2">
+                  <div class="heading__inner" style="font-size: {{BP_heading-2-size--das}}%; line-height: 1em; color: var(--{{BP_front-heading2-colour--fp}}{{^BP_front-heading2-colour--fp}}primary{{/BP_front-heading2-colour--fp}});
+                                                     font-family: var(--{{BP_subheading_font_das}}{{^BP_subheading_font_das}}biopak-new{{/BP_subheading_font_das}})">
+                    {{{BP_heading-2--das}}}
+                  </div><!--heading__inner-->
+                </div><!--heading-->
+              </div><!--heading__maxHeight-->
+            </div><!--grid__item heading__container-->
+            <div class="grid__item image__container">
+            </div><!--grid__item image__container-->
+            <div class="grid__item subheading__container" style="font-size: {{BP_heading-3-size-das}}%; ">
+              <div class="subheading" data-max-line="10" style="color: var(--{{BP_front-heading3-colour--fp}}{{^BP_front-heading3-colour--fp}}primary{{/BP_front-heading3-colour--fp}});">
+                {{{BP_subheading--das}}}
+              </div><!--subheading-->
+            </div><!--grid__item subheading__container-->
+
+            <div class="grid__item subheading__container subheading__container--leaderboard" style="font-size: {{BP_heading-3-size-das}}%;" >
+              <div class="subheading textFit-vertical" style="color: var(--{{BP_front-heading3-colour--fp}}{{^BP_front-heading3-colour--fp}}primary{{/BP_front-heading3-colour--fp}});">
+                {{{BP_subheading--das}}}
+              </div><!--subheading-->
+            </div><!--grid__item subheading__container-->
+
+            <div class="grid__item subheading__container subheading__container--skyscraper" style="font-size: {{BP_heading-3-size-das}}%;">
+              <div class="subheading textFit-horizontal" style="color: var(--{{BP_front-heading3-colour--fp}}{{^BP_front-heading3-colour--fp}}primary{{/BP_front-heading3-colour--fp}});">
+                {{{BP_subheading--das}}}
+              </div><!--subheading-->
+            </div><!--grid__item subheading__container-->
+
+            <div class="grid__item subheading__container subheading__container--wide-skyscraper" style="font-size: {{BP_heading-3-size-das}}%;">
+              <div class="subheading textFit-horizontal" style="color: var(--{{BP_front-heading3-colour--fp}}{{^BP_front-heading3-colour--fp}}primary{{/BP_front-heading3-colour--fp}});">
+                {{{BP_subheading--das}}}
+              </div><!--subheading-->
+            </div><!--grid__item subheading__container-->
+
+            {{#collection.BP_call-to-action-button--das}}
+            <div class="grid__item cta__container">
+              <a href="{{{BP_call-to-action-url--das}}}" class="cta">
+                <div class="textFit-horizontal">
+                  {{{BP_call-to-action-text--das}}}
+                </div>
+              </a><!--cta-->
+            </div><!--grid__item cta__container-->
+            {{/collection.BP_call-to-action-button--das}}
+            <div class="grid__item logo__container">
+              {{#collection.BP_call-to-action-button--das}}
+              <a href="{{{BP_call-to-action-url--das}}}" class="cta cta--leaderboard-banner">
+                <div class="textFit-horizontal">
+                  {{{BP_call-to-action-text--das}}}
+                </div>
+              </a><!--cta-->             
+              {{/collection.BP_call-to-action-button--das}}             
+
+              <img src=" {{{ team.logo }}} " class="logo logo--supporter logo--supporter-toggle-{{team-logo-reversed-toggle}}"><!--logo-->
+              <img src="  {{{ team.logo-reversed }}} " class="logo logo--supporter-reversed  logo--supporter-toggle-{{team-logo-reversed-toggle}}">
+              <img src="{{{BP_primary-logo--fp-page-one}}}" class="logo logo--main {{^team.logo}} no-team-logo {{/team.logo}} {{{BP_primary-logo--fp-page-one}}}{{^BP_primary-logo--fp-page-one}}white-logo{{/BP_primary-logo--fp-page-one}}"><!--logo-->
+
+
+
+            </div><!--grid__item logo__container-->
+          </div><!--grid-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      TextFit.fit({
+        selector: '.textFit-vertical',
+        fitMode: 'vertical',
+        alignItems: 'right'
+      });      
+
+      TextFit.fit({
+        selector: '.textFit-horizontal',
+        fitMode: 'horizontal',
+        alignItems: 'left'
+      });      
+
+
+    </script>
+
+
+  </body>
+</html>
