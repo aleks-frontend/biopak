@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html data-sign="OSB">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/Museo/stylesheet.css); 
+      @import url(https://outfit-assets-production.s3.amazonaws.com/fonts/BioPak%20Bold%20New/stylesheet.css);
+
+      html {
+        font-family: 'Museo 500';
+        font-size: 11pt;
+        color: #000;
+      }
+
+      :root {
+        --white: #fff;
+        --black: {{{account.colors.black}}};
+        --bioPak-green: {{{account.colors.green}}};
+        --bioPak-dark-green: {{{account.colors.primary}}};
+        --bioPak-brown: {{{account.colors.brown}}};
+        --bioPak-grey: {{{account.colors.grey}}};
+        --bioPak-orange: {{{account.colors.orange}}};
+        --bioPak-buff: {{{account.colors.buff}}};
+
+        --text-color: var(--white);
+      }
+      
+      .biopak-new {
+        --text-font-family: 'BioPak Bold New';
+      }
+
+      .regular {
+        --text-font-family: 'Museo 500';        
+      }
+
+      .bold {
+        --text-font-family: 'Museo 900';         
+      }
+
+      .theme--2 {
+        --text-font-family: 'Museo 500';
+      }
+
+      .theme--3 {
+        --text-font-family: 'Museo 500';
+      }
+
+      .brandTextColours--green {
+        --text-color: var(--bioPak-green);
+      }
+        .brandTextColours--black {
+        --text-color: var(--black);
+      }
+        .brandTextColours--dark-green {
+        --text-color: var(--bioPak-dark-green);
+      }
+        .brandTextColours--brown {
+        --text-color: var(--bioPak-brown);
+      }
+        .brandTextColours--grey {
+        --text-color: var(--bioPak-grey);
+      }
+      .brandTextColours--orange {
+        --text-color: var(--bioPak-orange);
+      }
+      .brandTextColours--buff {
+        --text-color: var(--bioPak-buff);
+      }
+      .quoteTextColours--black .quote{
+          --text-color: var(--black);
+      }
+      .quoteTextColours--green .quote{
+          --text-color: var(--bioPak-green);
+      }
+       .quoteTextColours--dark-green .quote{
+          --text-color: var(--bioPak-dark-green);
+      } 
+      .quoteTextColours--brown .quote{
+          --text-color: var(--bioPak-brown);
+      } 
+      .quoteTextColours--grey .quote{
+          --text-color: var(--bioPak-grey);
+      }
+       .quoteTextColours--orange .quote{
+          --text-color: var(--bioPak-orange);
+      }
+       .quoteTextColours--buff .quote{
+          --text-color: var(--bioPak-buff);
+      }
+   
+   
+      .tinymce_style--dark {
+        color: var(--bioPak-dark-green);
+      }
+
+      .tinymce_style--light {
+        color: var(--bioPak-green);    
+      }
+
+      .fit {
+        display: grid;
+        grid-template-rows: 1fr 104pt;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+
+      .heading__container {
+        display: flex;
+        flex-direction: column;
+        padding: 30pt 65pt;      
+      }
+
+      .heading__container--top-left,
+      .heading__container--top-middle,
+      .heading__container--top-right {
+        justify-content: flex-start;
+      }
+
+      .heading__container--top-left {
+        text-align: left;      
+      }
+
+      .heading__container--top-middle {
+        text-align: center;
+      }
+
+      .heading__container--top-right {
+        text-align: right;
+      }
+
+      .heading__container--middle-left,
+      .heading__container--middle-middle,
+      .heading__container--middle-right {
+        justify-content: center;
+      }
+
+      .heading__container--middle-left {
+        text-align: left;
+
+      }
+
+      .heading__container--middle-middle {
+        text-align: center;
+      }
+
+      .heading__container--middle-right {
+        text-align: right;  
+      }
+
+      .heading__container--bottom-left,
+      .heading__container--bottom-middle,
+      .heading__container--bottom-right {
+        justify-content: flex-end;
+      }
+
+      .heading__container--bottom-left {
+        text-align: left;
+      }
+
+      .heading__container--bottom-middle {
+        text-align: center;
+      }
+
+      .heading__container--bottom-right {
+        text-align: right;
+      }
+
+      .heading {
+        position: relative;
+        font-family: var(--text-font-family);
+        font-size: 74pt;
+        color: var(--text-color);
+      }
+
+      h1:before,
+      h1:after {
+        display: none;
+        position: relative;
+        content: "";
+        width: 93pt;
+        height: 93pt;
+        opacity: 0.2;
+        z-index: -1;
+      }
+
+      h1:first-child:before {
+        top: -8pt;
+        left: -39pt;
+        margin-right: -90pt;
+        background-image: url(https://files.outfit.io/media_library_items/68666/Quotation_Left_2.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      h1:last-child:after {
+        bottom: -44px;
+        right: -65pt;
+        margin-left: -93pt;
+        height: 97px;
+        background-image: url(https://files.outfit.io/media_library_items/68667/Quotation_Right_2.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: bottom;
+      }
+
+      .theme--3 h1:first-child:before,
+      .theme--3 h1:last-child:after {
+        display: inline-block;
+      }
+
+      .heading__container--top-right h1:last-child:after,
+      .heading__container--middle-right h1:last-child:after,
+      .heading__container--bottom-right h1:last-child:after {
+        right: -39pt;
+      }
+
+      .quote {
+        display: block;
+        padding: 10pt 0pt;
+        font-size: 20pt;
+        color: var(--text-color);
+      }
+
+      .theme--3 .quote {
+        display: block;
+      }
+
+      .logo__container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .logo, .logo__main {
+        max-width: 206pt;
+        max-height: 70pt;
+      }
+      
+        /*.primary-logo {
+          content: url({{{account.logos.primary}}});
+          width: 255px
+        }
+      
+       .black-logo {
+          content: url({{{account.logos.secondary-reversed}}});
+          width: 255px
+        }
+      
+       .white-logo {
+          content: url({{{account.logos.reversed}}});
+          width: 255px
+       }*/
+
+      .none {
+        display: none;
+      }
+
+      .logo--alt {
+        margin-left: 35pt;
+      }
+
+      .none .logo--alt {
+        margin-left: 0;
+      }
+
+      sup {
+          vertical-align: baseline;
+          position: relative;
+          top: -0.51em;
+          line-height: 0.03em;
+          font-size: 0.6em;
+      }
+      
+      sub {
+          vertical-align: baseline;
+          position: relative;
+          top: 0.01em;
+          line-height: 0.03em;
+          font-size: 0.6em;
+      }
+      
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}
+                                         theme--{{{ BP_template-theme--sms }}}
+                                         brandTextColours--{{{ BP_brand-text-colors--sms }}}
+                                         quoteTextColours--{{{ BP_quote-text-colors--sms }}}
+                                         " data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page">
+
+      <div class="bleed">
+
+        <!--{{{ BP_background-image--sms }}}-->
+        <!--{{{ BP_heading-font-thickness--sms }}}-->
+        <!--{{{ BP_heading-position--sms }}}-->
+        <!--{{{ BP_heading--sms }}}-->
+        <!--{{{ BP_heading-font-size--sms }}}-->
+        <!--{{{ BP_quote--sms }}}--> 
+		<!--{{{ BP_quote-font-size--sms }}}-->
+		<!--{{{ BP_logo_showhide }}}-->
+        <!--{{{BP_primary-logo--fp-page-one}}}-->
+        <!--{{{ BP_customer-logo--sms }}}--> 
+        
+        <div class="container fit">
+          <div class="backgroundImage"> {{{ BP_background-image--sms }}} </div> <!-- backgroundImage -->
+          <div class="heading__container heading__container--{{{ BP_heading-position--sms }}}{{^BP_heading-position--sms}}top-middle{{/BP_heading-position--sms}}">
+                  
+            <div class="heading {{{ BP_heading-font-thickness--sms }}}" data-max-height="570"> 
+              <div style="font-size: {{{ BP_heading-font-size--sms }}}em;">
+                {{{ BP_heading--sms }}}
+              </div>  <!-- font-size-regulator -->
+            </div>  <!-- heading -->
+            <div class="quote {{{ BP_heading-font-thickness--sms }}}"> 
+              <div style="font-size: {{{ BP_quote-font-size--sms }}}em;" data-max-line="4">
+                {{{ BP_quote--sms }}} 
+              </div>  <!-- font-size-regulator -->
+            </div> <!-- quote -->
+          </div> <!--- heading__container -->
+          <div class="logo__container {{{ BP_logo_showhide }}}"> 
+            <img src="{{{BP_primary-logo--fp-page-one}}}" class="logo__main {{{BP_primary-logo--fp-page-one}}}{{^BP_primary-logo--fp-page-one}}white-logo{{/BP_primary-logo--fp-page-one}}" />
+            
+            {{ # BP_customer-logo--sms }}
+            <img src="{{ BP_customer-logo--sms }}" class="logo logo--alt" />
+            {{ / BP_customer-logo--sms }}
+            
+          </div> <!-- logo__container -->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
